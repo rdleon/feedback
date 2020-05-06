@@ -1,5 +1,3 @@
-
-
 (function($){
 
 $.feedback = function (options) {
@@ -299,9 +297,9 @@ $.feedback = function (options) {
                             }
 
                             if (e.pageX > $(this).offset().left && 
-                                e.pageX < $(this).offset().left + parseInt($(this).width(), 10) + parseInt($(this).css('padding-left'), 10) + parseInt($(this).css('padding-right'), 10) + 2 * parseInt($(this).css('margin-left'), 10) && 
-                                e.pageY > $(this).offset().top &&
-                                e.pageY < $(this).offset().top + parseInt($(this).height(), 10) + parseInt($(this).css('padding-top'), 10) + parseInt($(this).css('padding-bottom'), 10) + 2 * parseInt($(this).css('margin-bottom'), 10))
+                                e.pageX < $(this).offset().left + $(this).width() && 
+                                e.pageY > $(this).offset().top + parseInt($(this).css('padding-top'), 10) &&
+                                e.pageY < $(this).offset().top + $(this).height() + parseInt($(this).css('padding-top'), 10))
                             {
                                 tmpHighlighted.push($(this));
                             }
@@ -314,8 +312,8 @@ $.feedback = function (options) {
 
                             var _x = $toHighlight.offset().left - 2,
                                 _y = $toHighlight.offset().top - 2,
-                                _w = $toHighlight.width() + parseInt($toHighlight.css('padding-left'), 10) + parseInt($toHighlight.css('padding-right'), 10) + 2 * parseInt($toHighlight.css('margin-left'), 10),
-                                _h = $toHighlight.height() + parseInt($toHighlight.css('padding-top'), 10) + parseInt($toHighlight.css('padding-bottom'), 10) + 2 * parseInt($toHighlight.css('margin-top'), 10);
+                                _w = $toHighlight.width() + parseInt($toHighlight.css('padding-left'), 10) + parseInt($toHighlight.css('padding-right'), 10) + 6,
+                                _h = $toHighlight.height() + parseInt($toHighlight.css('padding-top'), 10) + parseInt($toHighlight.css('padding-bottom'), 10) + 6;
 
                             if (highlight == 1) {
                                 drawlines(ctx, _x, _y, _w, _h);
