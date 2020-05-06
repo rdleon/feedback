@@ -299,9 +299,9 @@ $.feedback = function (options) {
                             }
 
                             if (e.pageX > $(this).offset().left && 
-                                e.pageX < $(this).offset().left + $(this).width() + $(this).css('padding-left') + $(this).css('padding-right') + 2 * $(this).css('margin-left') && 
+                                e.pageX < $(this).offset().left + parseInt($(this).width(), 10) + parseInt($(this).css('padding-left'), 10) + parseInt($(this).css('padding-right'), 10) + 2 * parseInt($(this).css('margin-left'), 10) && 
                                 e.pageY > $(this).offset().top &&
-                                e.pageY < $(this).offset().top + $(this).height() + parseInt($(this).css('padding-top'), 10) + parseInt($(this).css('padding-bottom'), 10) + 2 * $(this).css('margin-left'))
+                                e.pageY < $(this).offset().top + parseInt($(this).height(), 10) + parseInt($(this).css('padding-top'), 10) + parseInt($(this).css('padding-bottom'), 10) + 2 * parseInt($(this).css('margin-left'), 10))
                             {
                                 tmpHighlighted.push($(this));
                             }
