@@ -303,7 +303,9 @@
 #feedback-overview-description {  float: left }
 #feedback-overview-note {
   width: 240px;
+  height: 200px;
   padding: 4px;
+  border-radius: 5px;
   height: 90px;
   outline: none;
   font-family: Arial,sans-serif;
@@ -315,7 +317,7 @@
   padding: 1px;
   border: 1px solid #adadad;
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 #feedback-overview-description-text span {
   font-size: 14px;
