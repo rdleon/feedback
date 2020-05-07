@@ -549,6 +549,8 @@ $.feedback = function (options) {
                         $(document).scrollTop(sy);
                         post.img = img;
                         settings.onScreenshotTaken(post.img);
+
+                        console.log('Image: >>>', img)
                         if (settings.showDescriptionModal) {
                             if (settings.categories && settings.categories.length > 0) {
                                 for (i in settings.categories) {
@@ -563,7 +565,7 @@ $.feedback = function (options) {
                             $('#feedback-canvas-tmp').remove();
                             $('#feedback-overview').show();
                             $('#feedback-overview-description-text>textarea').remove();
-                            $('#feedback-overview-screenshot>img').remove();
+                            // $('#feedback-overview-screenshot>img').remove();
                             $('<textarea id="feedback-overview-note">' + $('#feedback-note').val() + '</textarea>').insertAfter('#feedback-overview-description-text h3:eq(0)');
                             $('#feedback-overview-screenshot').append('<img class="feedback-screenshot" src="' + img + '" />');
                             if (i > 0) {
