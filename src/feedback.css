@@ -28,13 +28,11 @@
   display: block;
   position: fixed;
 }
-.feedback-logo {
-  //width: 34px;
+.feedback-logo {  
   margin-bottom: 16px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 32px;
-  height: 32px;
+  font-size: 18px;
+  font-weight: Bold;  
+  border-bottom: 1px solid rgba(0,0,0,.1);
 }
 .feedback-next-btn {
   width: 72px;
@@ -187,6 +185,7 @@
   font-family: Arial,sans-serif;
   z-index: 40000;
   background: #fff;
+  border-radius: 10px;
   border: 1px solid rgba(0,0,0,.333);
   padding: 30px 42px;
   max-width: 540px;
