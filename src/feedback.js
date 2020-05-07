@@ -1,5 +1,3 @@
-
-
 (function($){
 
 $.feedback = function (options) {
@@ -27,11 +25,11 @@ $.feedback = function (options) {
         onScreenshotTaken:      function () {},
         tpl: {
             description: '<div id="feedback-welcome"><div class="feedback-logo">Feedback</div><p>Feedback lets you send us suggestions about our products. We welcome problem reports, feature ideas and general comments.</p><p>Start by writing a brief description:</p><textarea id="feedback-note-tmp"></textarea><p>Next we\'ll let you identify areas of the page related to your description.</p><button id="feedback-welcome-next" class="feedback-next-btn feedback-btn-gray">Next</button><div id="feedback-welcome-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
-            highlighter: '<div id="feedback-highlighter"><div class="feedback-logo">Feedback</div><p>Click or drag on the page (tap on mobile) the areas relevant to your feedback. Click "Next" when you are finished. Powered by <a href="https://www.loopinput.com/">Loop</a></p><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>Highlight</span></button><label>Highlight areas relevant to your feedback.</label><button class="feedback-setblackout"><div class="ico"></div><span>Black out</span></button><label class="lower">Black out any personal information.</label><div class="feedback-buttons"><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">Next</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div class="feedback-wizard-close"></div></div>',
-            overview: '<div id="feedback-overview"><div class="feedback-logo">Feedback</div><div id="feedback-overview-description"><div id="feedback-overview-description-text"><h3>Description</h3><!--<h3 class="feedback-additional">Additional info</h3><div id="feedback-additional-none"><span>None</span></div><div id="feedback-browser-info"><span>Browser Info</span></div><div id="feedback-page-info"><span>Page Info</span></div>--><div id="feedback-page-structure"><span>Page Structure</span></div></div></div><div id="feedback-overview-screenshot"><h3>Screenshot</h3></div><div class="feedback-buttons"><button id="feedback-submit" class="feedback-submit-btn feedback-btn-blue">Submit</button><button id="feedback-overview-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div id="feedback-overview-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
+            highlighter: '<div id="feedback-highlighter" style="height: 300px"><div class="feedback-logo">Feedback</div><p>Click or drag on the page (tap on mobile) the areas relevant to your feedback. Click "Next" when you are finished. Powered by <a href="https://www.loopinput.com/">Loop</a></p><button class="feedback-sethighlight feedback-active"><div class="ico"></div><span>Highlight</span></button><label>Highlight areas relevant to your feedback.</label><button class="feedback-setblackout"><div class="ico"></div><span>Black out</span></button><label class="lower">Black out any personal information.</label><div class="feedback-buttons"><button id="feedback-highlighter-next" class="feedback-next-btn feedback-btn-gray">Next</button><button id="feedback-highlighter-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div class="feedback-wizard-close"></div></div>',
+            overview: '<div id="feedback-overview" style="height: 400px"><div class="feedback-logo">Feedback</div><div id="feedback-overview-description"><div id="feedback-overview-description-text"><h3>Description</h3><!--<h3 class="feedback-additional">Additional info</h3><div id="feedback-additional-none"><span>None</span></div><div id="feedback-browser-info"><span>Browser Info</span></div><div id="feedback-page-info"><span>Page Info</span></div>--><div id="feedback-page-structure"><span>Page Structure</span></div></div></div><div id="feedback-overview-screenshot"><h3>Screenshot</h3></div><div class="feedback-buttons"><button id="feedback-submit" class="feedback-submit-btn feedback-btn-blue">Submit</button><button id="feedback-overview-back" class="feedback-back-btn feedback-btn-gray">Back</button></div><div id="feedback-overview-error">Please enter a description.</div><div class="feedback-wizard-close"></div></div>',
             submitSuccess: '<div id="feedback-submit-success"><div class="feedback-logo">Feedback</div><p>Thank you for your feedback. We value every piece of feedback we receive.</p><p>We cannot respond individually to every one, but we will use your comments as we strive to improve your experience.</p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>',
             submitError: '<div id="feedback-submit-error"><div class="feedback-logo">Feedback</div><p>Thank you for your feedback. We value every piece of feedback we receive. Powered by <a href="https://www.loopinput.com/">Loop</a></p><button class="feedback-close-btn feedback-btn-blue">OK</button><div class="feedback-wizard-close"></div></div>',
-	    submitLoading: '<div id="feedback-submit-loading"><div class="feedback-logo">Uploading</div><p>Please wait...</p></div>',
+	          submitLoading: '<div id="feedback-submit-loading"><div class="feedback-logo">Uploading</div><p>Please wait...</p></div>',
             categories: '<label>Categories: </label>'
         },
         onClose:            function() {},
@@ -141,7 +139,7 @@ $.feedback = function (options) {
 
             rect 	= {};
             drag 	= false;
-            highlight 	= 1;
+            highlight = 1;
             post	= {};
 
             if (settings.postBrowserInfo) {
@@ -299,9 +297,9 @@ $.feedback = function (options) {
                             }
 
                             if (e.pageX > $(this).offset().left && 
-                                e.pageX < $(this).offset().left + $(this).width() && 
-                                e.pageY > $(this).offset().top + parseInt($(this).css('padding-top'), 10) &&
-                                e.pageY < $(this).offset().top + $(this).height() + parseInt($(this).css('padding-top'), 10))
+                                e.pageX < $(this).offset().left + $(this).width() + $(this).css('padding-left') + $(this).css('padding-right') + 2 * $(this).css('margin-left') && 
+                                e.pageY > $(this).offset().top &&
+                                e.pageY < $(this).offset().top + $(this).height() + parseInt($(this).css('padding-top'), 10) + parseInt($(this).css('padding-bottom'), 10) + 2 * $(this).css('margin-left'))
                             {
                                 tmpHighlighted.push($(this));
                             }
@@ -314,8 +312,8 @@ $.feedback = function (options) {
 
                             var _x = $toHighlight.offset().left - 2,
                                 _y = $toHighlight.offset().top - 2,
-                                _w = $toHighlight.width() + parseInt($toHighlight.css('padding-left'), 10) + parseInt($toHighlight.css('padding-right'), 10) + 6,
-                                _h = $toHighlight.height() + parseInt($toHighlight.css('padding-top'), 10) + parseInt($toHighlight.css('padding-bottom'), 10) + 6;
+                                _w = $toHighlight.width() + parseInt($toHighlight.css('padding-left'), 10) + parseInt($toHighlight.css('padding-right'), 10) + 2 * parseInt($toHighlight.css('margin-left'), 10),
+                                _h = $toHighlight.height() + parseInt($toHighlight.css('padding-top'), 10) + parseInt($toHighlight.css('padding-bottom'), 10) + 2 * parseInt($toHighlight.css('margin-top'), 10);
 
                             if (highlight == 1) {
                                 drawlines(ctx, _x, _y, _w, _h);

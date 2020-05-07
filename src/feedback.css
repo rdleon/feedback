@@ -28,13 +28,11 @@
   display: block;
   position: fixed;
 }
-.feedback-logo {
-  //width: 34px;
+.feedback-logo {  
   margin-bottom: 16px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: 32px;
-  height: 32px;
+  font-size: 18px;
+  font-weight: Bold;  
+  border-bottom: 1px solid rgba(0,0,0,.1);
 }
 .feedback-next-btn {
   width: 72px;
@@ -187,6 +185,7 @@
   font-family: Arial,sans-serif;
   z-index: 40000;
   background: #fff;
+  border-radius: 10px;
   border: 1px solid rgba(0,0,0,.333);
   padding: 30px 42px;
   max-width: 540px;
@@ -303,7 +302,9 @@
 #feedback-overview-description {  float: left }
 #feedback-overview-note {
   width: 240px;
+  height: 200px;
   padding: 4px;
+  border-radius: 5px;
   height: 90px;
   outline: none;
   font-family: Arial,sans-serif;
@@ -315,7 +316,7 @@
   padding: 1px;
   border: 1px solid #adadad;
   width: 100%;
-  height: auto;
+  height: 200px;
 }
 #feedback-overview-description-text span {
   font-size: 14px;
