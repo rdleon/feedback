@@ -520,8 +520,8 @@ $.feedback = function (options) {
 
             $('#feedback-highlighter-next').unbind('click').on('click', function() {
                 var select = '',
-                    options = '',
-		    i = 0;
+                    options = '',		    
+                    i = 0;
 
                 canDraw = false;
                 $('#feedback-canvas').css('cursor', 'default');
@@ -537,13 +537,14 @@ $.feedback = function (options) {
                         var select = $('<div id="feedback-category"><select name="category"></select></div>'),
                             options = '',
                             i;
+                            w = $(document).width();
 
                         if (!settings.screenshotStroke) {
                             redraw(ctx);
                         }
 
-                        _canvas = $('<canvas id="feedback-canvas-tmp" width="'+ w +'" height="'+ dh +'"/>').hide().appendTo('body');
-                        _ctx = _canvas.get(0).getContext('2d');
+                        _canvas = $('<canvas id="feedback-canvas" width="'+ w +'" height="'+ dh +'"/>').hide().appendTo('body');
+                        _ctx = _canvas.get(0).getContext('2d');                        
                         _ctx.drawImage(canvas, 0, sy, w, dh, 0, 0, w, dh);
                         img = _canvas.get(0).toDataURL();
                         $(document).scrollTop(sy);
