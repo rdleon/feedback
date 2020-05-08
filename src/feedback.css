@@ -111,9 +111,7 @@
 }
 #feedback-overview {
   display: none;
-  //top: 10%;
-  //left: 50%;
-  //margin-left: -420px;
+
   position: fixed;
   width: 80%!important;
   max-width: 840px!important;
@@ -123,13 +121,16 @@
 #feedback-submit-loading,
 #feedback-submit-success {
   top: 30%;
-  //left: 50%;
-  //margin-left: -300px;
   display: block;
   position: fixed;
   max-width: 600px;
   width: 80%;
   height: auto;
+}
+
+#feedback-submit-error{
+  border-bottom-right-radius: 30px;
+  border-top-right-radius: 30px;
 }
 .feedback-btn {
   padding: 10px;
@@ -186,6 +187,7 @@
   z-index: 40000;
   background: #fff;
   border-radius: 5px;
+  border-bottom-right-radius: 50px;
   border: 1px solid rgba(0,0,0,.333);
   padding: 30px 42px;
   max-width: 540px;
@@ -290,7 +292,7 @@
 #feedback-highlighter label.lower {  margin-top: 10px }
 .feedback-buttons {
   float: right;
-  margin-top: 20px;
+  margin-top: 10px;
   clear: both;
 }
 #feedback-module h3 {
@@ -301,22 +303,22 @@
 .feedback-additional {  margin-bottom: 20px!important }
 #feedback-overview-description {  float: left }
 #feedback-overview-note {
-  width: 240px;
+  width: 340px;
   height: 200px;
-  padding: 4px;
-  border-radius: 5px;
-  height: 90px;
+  padding: 5px;
+  border-radius: 5px;  
   outline: none;
   font-family: Arial,sans-serif;
-  border: 1px solid #adadad;
 }
 #feedback-overview-screenshot {  float: right }
 .feedback-screenshot {
   max-width: 396px;
-  padding: 1px;
+  padding: 5px;
   border: 1px solid #adadad;
   width: 100%;
-  height: 200px;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #0003;
 }
 #feedback-overview-description-text span {
   font-size: 14px;
