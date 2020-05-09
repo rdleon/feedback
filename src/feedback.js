@@ -6,7 +6,7 @@
       endpoint: '',
       postBrowserInfo: true,
       postURL: true,
-      postHTML: true,
+      postHTML: false,
       postExtraInfo: null,
       categories: [],
       proxy: undefined,
