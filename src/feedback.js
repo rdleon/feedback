@@ -515,6 +515,69 @@
           $('.feedback-setblackout').removeClass('feedback-active');
         });
 
+            $('#feedback-highlighter-next').unbind('click').on('click', function() {
+                var select = '',
+                    options = '',
+		    i = 0;
+
+                canDraw = false;
+                $('#feedback-canvas').css('cursor', 'default');
+                var sy = $(document).scrollTop(),
+                dh = $(window).height();
+                $('#feedback-helpers').hide();
+                $('#feedback-highlighter').hide();
+                if (!settings.screenshotStroke) {
+                    redraw(ctx, false);
+                }
+                html2canvas($('body'), {
+                    onrendered: function(canvas) {
+                        var select = $('<div id="feedback-category"><select name="category"></select></div>'),
+                            options = '',
+                            i;
+
+                        if (!settings.screenshotStroke) {
+                            redraw(ctx);
+                        }
+
+                        _canvas = $('<canvas id="feedback-canvas-tmp" width="'+ w +'" height="'+ dh +'"/>').hide().appendTo('body');
+                        _ctx = _canvas.get(0).getContext('2d');
+                        _ctx.drawImage(canvas, 0, sy, w, dh, 0, 0, w, dh);
+                        img = _canvas.get(0).toDataURL();
+                        $(document).scrollTop(sy);
+                        post.img = img;
+                        settings.onScreenshotTaken(post.img);
+                        if (settings.showDescriptionModal) {
+                            if (settings.categories && settings.categories.length > 0) {
+                                for (i in settings.categories) {
+                                    options += '<option value="' + settings.categories[i] + '">' + settings.categories[i] + '</option>';
+                                }
+
+                                select.prepend(settings.tpl.categories);
+
+                                select.children('select').append(options);
+                            }
+
+                            $('#feedback-canvas-tmp').remove();
+                            $('#feedback-overview').show();
+                            $('#feedback-overview-description-text>textarea').remove();
+                            $('#feedback-overview-screenshot>img').remove();
+                            $('<textarea id="feedback-overview-note">' + $('#feedback-note').val() + '</textarea>').insertAfter('#feedback-overview-description-text h3:eq(0)');
+                            $('#feedback-overview-screenshot').append('<img class="feedback-screenshot" src="' + img + '" />');
+                            if (i > 0) {
+                                $('#feedback-category').remove();
+                                $('#feedback-overview-description-text').before(select);
+                            }
+                        } else {
+                            $('#feedback-module').remove();
+                            close();
+                            _canvas.remove();
+                        }
+                    },
+                    proxy: settings.proxy,
+                    letterRendering: settings.letterRendering
+                });
+            });
+
         $(document).on('mousedown', '.feedback-setblackout', function () {
           highlight = 0;
           $(this).addClass('feedback-active');
