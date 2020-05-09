@@ -185,7 +185,7 @@
   font-family: Arial,sans-serif;
   z-index: 40000;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 5px;
   border: 1px solid rgba(0,0,0,.333);
   padding: 30px 42px;
   max-width: 540px;
@@ -286,6 +286,18 @@
   line-height: 30px;
   font-size: 13px;
   font-weight: normal;
+}
+
+@media (max-width: 500px){
+  #feedback-highlighter {
+    height: 450px;
+  }
+  #feedback-overview {
+    height: 530px;
+  }
+  #feedback-overview-note {
+    width: 210px;
+  }
 }
 #feedback-highlighter label.lower {  margin-top: 10px }
 .feedback-buttons {
