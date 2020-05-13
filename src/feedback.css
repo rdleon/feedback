@@ -310,6 +310,17 @@
   font-size: 15px;
   margin: 8px 0;
 }
+
+#emailInfo {
+  color: black;
+}
+
+#emailField {
+  width: 240px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #adadad
+}
 .feedback-additional {  margin-bottom: 20px!important }
 #feedback-overview-description {  float: left }
 #feedback-overview-note {
